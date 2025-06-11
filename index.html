@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <title>my portfolio website </title>
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-    <header>
+        <header>
         <div class="container">
             <nav>
                 <a href="index.html" class="logo">Lokesh Rao</a>
@@ -39,37 +38,21 @@
                     <div class="skill-item">
                         <div class="skill-name">
                             <span>Python</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">
                             <span>HTML</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">
                             <span>CSS</span>
-                            <span>70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">
                             <span>JavaScript</span>
-                            <span>50%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%"></div>
                         </div>
                     </div>
                 </div>
@@ -171,13 +154,15 @@
         const body = document.body;
         
         // Check if user has a preferred theme
-        if (localStorage.getItem('darkMode') === 'true') {
+        const savedTheme = JSON.parse(localStorage.getItem('darkMode') || 'false');
+        if (savedTheme) {
             body.classList.add('dark-mode');
         }
         
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
-            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+            const isDarkMode = body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
         });
     </script>
 </body>
